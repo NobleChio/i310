@@ -1,6 +1,4 @@
-#include "Utilites.h"
-
-using namespace std;
+#include "Utilities.h"
 
 void displayMenu()
 {
