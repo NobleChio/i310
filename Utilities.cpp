@@ -1,6 +1,13 @@
-#ifndef UTILITIES_H
-#define UTILITIES_H
+#include "Utilites.h"
 
-void displayMenu();
+using namespace std;
 
-#endif
+void displayMenu()
+{
+    cout << "2. Search by title" << endl;
+    cout << "3. Search by genre" << endl;
+    cout << "4. Average rating" << endl;
+    cout << "5. Number of movies" << endl;
+    cout << "0. Exit" << endl;
+    cout << "Enter choice: ";
+}
