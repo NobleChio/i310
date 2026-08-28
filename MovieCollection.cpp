@@ -1,73 +1,73 @@
-#include MovieCollection.h 
+#include "MovieCollection.h"
 
-    MovieCollection::void addMovie(const Movie& movie)
+void MovieCollection::addMovie(const Movie& movie)
+{
+    movies.push_back(movie);
+}
+
+void MovieCollection::displayAllMovies() const
+{
+    if (movies.empty())
     {
-        movies.push_back(movie);
+        cout << "No movies found." << endl;
+        return;
     }
 
-    MovieCollection::void displayAllMovies() const
+    cout << left
+            << setw(30) << "Title"
+            << setw(15) << "Genre"
+            << setw(8) << "Year"
+            << "Rating" << endl;
+
+    for (const Movie& movie : movies)
+        movie.display();
+}
+
+void MovieCollection::searchByTitle(string title) const
+{
+    for (const Movie& movie : movies)
     {
-        if (movies.empty())
+        if (toLower(movie.getTitle()) == toLower(title))
         {
-            cout << "No movies found." << endl;
+            movie.display();
             return;
         }
+    }
 
-        cout << left
-             << setw(30) << "Title"
-             << setw(15) << "Genre"
-             << setw(8) << "Year"
-             << "Rating" << endl;
+    cout << "Movie not found." << endl;
+}
 
-        for (const Movie& movie : movies)
+void MovieCollection::displayByGenre(string genre) const
+{
+    bool found = false;
+
+    for (const Movie& movie : movies)
+    {
+        if (toLower(movie.getGenre()) == toLower(genre))
+        {
             movie.display();
-    }
-
-    MovieCollection::void searchByTitle(string title) const
-    {
-        for (const Movie& movie : movies)
-        {
-            if (toLower(movie.getTitle()) == toLower(title))
-            {
-                movie.display();
-                return;
-            }
+            found = true;
         }
-
-        cout << "Movie not found." << endl;
     }
 
-    MovieCollection::void displayByGenre(string genre) const
-    {
-        bool found = false;
+    if (!found)
+        cout << "No movies found." << endl;
+}
 
-        for (const Movie& movie : movies)
-        {
-            if (toLower(movie.getGenre()) == toLower(genre))
-            {
-                movie.display();
-                found = true;
-            }
-        }
+double MovieCollection::calculateAverageRating() const
+{
+    if (movies.empty())
+        return 0.0;
 
-        if (!found)
-            cout << "No movies found." << endl;
-    }
+    double total = 0.0;
 
-    MovieCollection::double calculateAverageRating() const
-    {
-        if (movies.empty())
-            return 0.0;
+    for (const Movie& movie : movies)
+        total += movie.getRating();
 
-        double total = 0.0;
+    return total / movies.size();
+}
 
-        for (const Movie& movie : movies)
-            total += movie.getRating();
-
-        return total / movies.size();
-    }
-
-    MovieCollection::int getNumberOfMovies() const
-    {
-        return movies.size();
-    }
+int MovieCollection::getNumberOfMovies() const
+{
+    return movies.size();
+}

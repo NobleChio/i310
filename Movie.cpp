@@ -1,7 +1,6 @@
-#include Movies.h
+#include "Movie.h"
 
-public:
-    Movies::Movie()
+    Movie::Movie()
     {
         title = "";
         genre = "";
@@ -9,7 +8,7 @@ public:
         rating = 0.0;
     }
 
-    Movies::Movie(string t, string g, int y, double r)
+    Movie::Movie(string t, string g, int y, double r)
     {
         title = t;
         genre = g;
@@ -17,27 +16,27 @@ public:
         rating = r;
     }
 
-    Movies::string getTitle() const
+    string Movie::getTitle() const
     {
         return title;
     }
 
-    Movies::string getGenre() const
+    string Movie::getGenre() const
     {
         return genre;
     }
 
-    Movies::int getYear() const
+    int Movie::getYear() const
     {
         return year;
     }
 
-    Movies::double getRating() const
+    double Movie::getRating() const
     {
         return rating;
     }
 
-    Movies::void display() const
+    void Movie::display() const
     {
         cout << left
              << setw(30) << title

@@ -1,42 +1,38 @@
 #include "FileManager.h"
 
-class FileManager
+bool FileManager::loadMovies(string filename, MovieCollection& collection)
 {
-public:
-    static bool loadMovies(string filename, MovieCollection& collection)
+    ifstream inputFile(filename);
+
+    if (!inputFile)
+        return false;
+
+    string line;
+
+    while (getline(inputFile, line))
     {
-        ifstream inputFile(filename);
+        if (line.empty())
+            continue;
 
-        if (!inputFile)
-            return false;
+        stringstream ss(line);
 
-        string line;
+        string title;
+        string genre;
+        string yearString;
+        string ratingString;
 
-        while (getline(inputFile, line))
-        {
-            if (line.empty())
-                continue;
+        getline(ss, title, ',');
+        getline(ss, genre, ',');
+        getline(ss, yearString, ',');
+        getline(ss, ratingString);
 
-            stringstream ss(line);
+        int year = stoi(yearString);
+        double rating = stod(ratingString);
 
-            string title;
-            string genre;
-            string yearString;
-            string ratingString;
-
-            getline(ss, title, ',');
-            getline(ss, genre, ',');
-            getline(ss, yearString, ',');
-            getline(ss, ratingString);
-
-            int year = stoi(yearString);
-            double rating = stod(ratingString);
-
-            Movie movie(title, genre, year, rating);
-            collection.addMovie(movie);
-        }
-
-        inputFile.close();
-        return true;
+        Movie movie(title, genre, year, rating);
+        collection.addMovie(movie);
     }
-};
+
+    inputFile.close();
+    return true;
+}

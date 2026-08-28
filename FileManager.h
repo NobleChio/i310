@@ -1,7 +1,7 @@
 #ifndef FILEMANAGER_H
 #define FILEMANAGER_H
 
-#include "MovieCollection.h";
+#include "MovieCollection.h"
 
 using namespace std;
 

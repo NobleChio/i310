@@ -12,6 +12,8 @@
 
 using namespace std;
 
+string toLower(string str);
+
 void displayMenu();
 
 #endif
