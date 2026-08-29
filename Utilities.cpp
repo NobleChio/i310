@@ -1,6 +1,4 @@
-#include "Utilites.h"
-
-using namespace std;
+#include "Utilities.h"
 
 void displayMenu()
 {
@@ -11,3 +9,12 @@ void displayMenu()
     cout << "0. Exit" << endl;
     cout << "Enter choice: ";
 }
+
+string toLower(string text)
+{
+    for (char& c : text)
+        c = tolower(c);
+
+    return text;
+}
+

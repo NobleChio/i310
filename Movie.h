@@ -1,6 +1,8 @@
 #ifndef MOVIE_H
 #define MOVIE_H
 
+#include "Utilities.h"
+
 class Movie {
     private:
         string title;

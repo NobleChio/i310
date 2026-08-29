@@ -1,6 +1,8 @@
 #ifndef MOVIECOLLECTION_H
 #define MOVIECOLLECTION_H
 
+#include "Movie.h"
+
 class MovieCollection {
     private:
         vector<Movie> movies;
